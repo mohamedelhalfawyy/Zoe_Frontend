@@ -444,19 +444,19 @@
     width: 50%;
 }
 
-.container {
+.reload-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 }
 
-.container .reload-btn span {
+.reload-container .reload-btn span {
     position: relative;
     z-index: 100;
 }
 
-.container .reload-btn {
+.reload-container .reload-btn {
     position: relative;
     display: inline-block;
     padding: 15px 30px;
@@ -474,7 +474,7 @@
     font-family: "Poppins", sans-serif;
 }
 
-.container .reload-btn:hover {
+.reload-container .reload-btn:hover {
     transition-delay: 0.5s;
     color: #1f2029;
     box-shadow: 0 0 10px #ffeba7,
@@ -484,7 +484,7 @@
                 0 0 160px #ffeba7;
             }
 
-.container .reload-btn::before {
+.reload-container .reload-btn::before {
     content: '';
     position: absolute;
     left: -20px;
@@ -500,7 +500,7 @@
     transition-delay: 0.2s, 0.1s, 0s, 0s;
 }
 
-.container .reload-btn:hover::before {
+.reload-container .reload-btn:hover::before {
     width: 60%;
     height: 100%;
     left: -2px;
@@ -509,7 +509,7 @@
     transition-delay: 0s, 0.1s, 0.2s, 0.2s;
 }
 
-.container .reload-btn::after {
+.reload-container .reload-btn::after {
     content: '';
     position: absolute;
     right: -20px;
@@ -525,7 +525,7 @@
     transition-delay: 0.2s, 0.1s, 0s, 0s;
 }
 
-.container .reload-btn:hover::after {
+.reload-container .reload-btn:hover::after {
     width: 60%;
     height: 100%;
     right: -2px;
