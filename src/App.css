@@ -443,3 +443,93 @@
     height: 50%;
     width: 50%;
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.container .reload-btn span {
+    position: relative;
+    z-index: 100;
+}
+
+.container .reload-btn {
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    border: 2px solid #ffeba7;
+    margin: 40px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 2px;
+    color: #fff;
+    background-color: #1f2029;
+    -webkit-box-reflect: below 0px linear-gradient(transparent, #0002);
+    transition: 0.1s;
+    transition-delay: 0s;
+    font-family: "Poppins", sans-serif;
+}
+
+.container .reload-btn:hover {
+    transition-delay: 0.5s;
+    color: #1f2029;
+    box-shadow: 0 0 10px #ffeba7,
+                0 0 20px #ffeba7,
+                0 0 40px #ffeba7,
+                0 0 80px #ffeba7,
+                0 0 160px #ffeba7;
+            }
+
+.container .reload-btn::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 2px;
+    background: #ffeba7;
+    box-shadow: 5px -8px 0 #ffeba7,
+                5px 8px 0 #ffeba7;
+    transition: width 0.2s, left 0.2s, height 0.2s,
+    box-shadow 0.2s;
+    transition-delay: 0.2s, 0.1s, 0s, 0s;
+}
+
+.container .reload-btn:hover::before {
+    width: 60%;
+    height: 100%;
+    left: -2px;
+    box-shadow: 5px 0 0 #ffeba7,
+    5px 0 0 #ffeba7;
+    transition-delay: 0s, 0.1s, 0.2s, 0.2s;
+}
+
+.container .reload-btn::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 2px;
+    background: #ffeba7;
+    box-shadow: -5px -8px 0 #ffeba7,
+    -5px 8px 0 #ffeba7;
+    transition: width 0.2s, left 0.2s, height 0.2s,
+    box-shadow 0.2s;
+    transition-delay: 0.2s, 0.1s, 0s, 0s;
+}
+
+.container .reload-btn:hover::after {
+    width: 60%;
+    height: 100%;
+    right: -2px;
+    box-shadow: -5px 0 0 #ffeba7,
+    -5px 0 0 #ffeba7;
+    transition-delay: 0s, 0.1s, 0.2s, 0.2s;
+}
