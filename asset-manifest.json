@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/movies/static/css/main.5f0c85e4.css",
-    "main.js": "/movies/static/js/main.2c478eef.js",
-    "static/js/787.afe4bd0c.chunk.js": "/movies/static/js/787.afe4bd0c.chunk.js",
-    "static/media/fontawesome-webfont.svg?v=4.7.0": "/movies/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
-    "static/media/error.gif": "/movies/static/media/error.f02b01c759b5ee88c590.gif",
-    "static/media/fontawesome-webfont.eot": "/movies/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
-    "static/media/fontawesome-webfont.ttf?v=4.7.0": "/movies/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
-    "static/media/fontawesome-webfont.woff?v=4.7.0": "/movies/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
-    "static/media/fontawesome-webfont.woff2?v=4.7.0": "/movies/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
-    "static/media/logo_nbg.png": "/movies/static/media/logo_nbg.515b50d45f01553a8f0a.png",
-    "index.html": "/movies/index.html",
-    "main.5f0c85e4.css.map": "/movies/static/css/main.5f0c85e4.css.map",
-    "main.2c478eef.js.map": "/movies/static/js/main.2c478eef.js.map",
-    "787.afe4bd0c.chunk.js.map": "/movies/static/js/787.afe4bd0c.chunk.js.map"
+    "main.css": "/Zoe_Frontend/static/css/main.25380b52.css",
+    "main.js": "/Zoe_Frontend/static/js/main.058901ac.js",
+    "static/js/787.afe4bd0c.chunk.js": "/Zoe_Frontend/static/js/787.afe4bd0c.chunk.js",
+    "static/media/fontawesome-webfont.svg?v=4.7.0": "/Zoe_Frontend/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
+    "static/media/error.gif": "/Zoe_Frontend/static/media/error.f02b01c759b5ee88c590.gif",
+    "static/media/fontawesome-webfont.eot": "/Zoe_Frontend/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
+    "static/media/fontawesome-webfont.ttf?v=4.7.0": "/Zoe_Frontend/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
+    "static/media/fontawesome-webfont.woff?v=4.7.0": "/Zoe_Frontend/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
+    "static/media/fontawesome-webfont.woff2?v=4.7.0": "/Zoe_Frontend/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
+    "static/media/logo_nbg.png": "/Zoe_Frontend/static/media/logo_nbg.515b50d45f01553a8f0a.png",
+    "index.html": "/Zoe_Frontend/index.html",
+    "main.25380b52.css.map": "/Zoe_Frontend/static/css/main.25380b52.css.map",
+    "main.058901ac.js.map": "/Zoe_Frontend/static/js/main.058901ac.js.map",
+    "787.afe4bd0c.chunk.js.map": "/Zoe_Frontend/static/js/787.afe4bd0c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5f0c85e4.css",
-    "static/js/main.2c478eef.js"
+    "static/css/main.25380b52.css",
+    "static/js/main.058901ac.js"
   ]
 }
