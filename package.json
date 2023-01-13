@@ -52,6 +52,7 @@
     ]
   },
   "devDependencies": {
-    "@iconify/react": "^4.0.1"
+    "@iconify/react": "^4.0.1",
+    "resolve-url-loader": "^5.0.0"
   }
 }

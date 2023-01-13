@@ -69,6 +69,10 @@ class Movies extends Component {
         this.setState({searchQuery: query, selectedGenre: null, currentPage: 1});
     };
 
+    refreshPage = () => {
+        window.location.reload();
+    }
+
     getPagedData = () => {
         const {pageSize, currentPage, movies: allMovies, selectedGenre, sortColumn, searchQuery} = this.state;
 
@@ -95,6 +99,9 @@ class Movies extends Component {
                     <p>
                         There are <code>NO MOVIES</code> in the Database.
                     </p>
+                    <div className={"container"}>
+                        <button onClick={this.refreshPage} className={"reload-btn"}><span>Refresh</span></button>
+                    </div>
                 </header>
             </div>
         );
