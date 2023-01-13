@@ -99,7 +99,7 @@ class Movies extends Component {
                     <p>
                         There are <code>NO MOVIES</code> in the Database.
                     </p>
-                    <div className={"container"}>
+                    <div className={"reload-container"}>
                         <button onClick={this.refreshPage} className={"reload-btn"}><span>Refresh</span></button>
                     </div>
                 </header>
