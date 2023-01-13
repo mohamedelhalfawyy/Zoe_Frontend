@@ -39,6 +39,7 @@ class App extends Component {
                             <Route path="/movies" element={<Movies user={user}/>}/>
                             <Route path="/not-found" element={<NotFound/>}/>
                             <Route path="/" exact element={<Navigate to="/movies"/>}/>
+                            <Route path="/Zoe_Frontend" element={<Navigate to="/movies"/>}/>
                             <Route path="*" element={<Navigate to="/not-found" replace/>}/>
                         </Routes>
                     </main>
