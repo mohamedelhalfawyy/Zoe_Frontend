@@ -149,7 +149,9 @@ class Form extends Component {
                             "title",
                             "Movie Title",
                             "form-group",
-                            "input-icon uil uil-lock-alt",
+                            "material-symbols:movie-filter",
+                            "text",
+                            false
                         )}
                         {!isLogin && this.renderSelect("genreId",
                             "Genre",

@@ -4,9 +4,10 @@ import Joi from 'joi-browser';
 import Form from "./common/form";
 import {getMovie, saveMovie} from "../Services/movieService";
 import {getGenres} from "../Services/genreService";
+import {toast} from "react-toastify";
 
 function withParams(Component) {
-    return props => <Component {...props} params={useParams()} navigate={useNavigate()}/>;
+    return props => <Component {...props} params={useParams()} navigate={useNavigate()} />;
 }
 
 class MovieForm extends Form {
@@ -20,6 +21,7 @@ class MovieForm extends Form {
         },
         genres: [],
         errors: {},
+        isLoaded: false
     };
 
     formSchema = Joi.object({
@@ -32,12 +34,11 @@ class MovieForm extends Form {
 
     async populateGenres() {
         const {data: genres} = await getGenres();
-        this.setState({genres});
+        this.setState({genres, isLoaded: true});
     }
 
     async populateMovie() {
         try {
-
             let {id} = this.props.params;
             const movieId = id;
             if (movieId === "new") return;
@@ -52,8 +53,8 @@ class MovieForm extends Form {
     }
 
     async componentDidMount() {
-        await this.populateGenres();
         await this.populateMovie();
+        await this.populateGenres();
     }
 
     mapToViewModel(movie) {
@@ -67,20 +68,32 @@ class MovieForm extends Form {
     }
 
 
-    doSubmit = async() => {
+    doSubmit = async () => {
+        this.setState({isLoaded: false});
+
         const {account} = this.state;
 
-        await saveMovie(account);
+        await saveMovie(account)
+            .finally(() => this.setState({isLoaded: true}));
 
+        toast.success('Movie Added Successfully!');
         this.props.navigate('/movies');
     };
 
     render() {
+        const isLoaded = this.state.isLoaded;
+
         return (
             <div>
-                <form onSubmit={this.handleFormSubmit}>
-                    {this.renderCardSection(false, "Movie Form")}
-                </form>
+                {isLoaded ? (<div>
+                    <form onSubmit={this.handleFormSubmit}>{this.renderCardSection(false, "Movie Form")}</form>
+                </div>) : (<div className="d-flex justify-content-center">
+                    <div className="spinner-border text-warning"
+                         style={{top: "50%",left: "50%",position: "fixed", width: "4rem", height: "4rem"}}
+                         role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </div>)}
             </div>
         );
     };
