@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component,useState} from "react";
 import _ from 'lodash';
 import Pagination from "./common/pagination";
 import {deleteMovie, getMovies} from "../Services/movieService";
@@ -18,7 +18,8 @@ class Movies extends Component {
         pageSize: 4,
         searchQuery: "",
         selectedGenre: null,
-        sortColumn: {path: 'title', order: 'asc'}
+        sortColumn: {path: 'title', order: 'asc'},
+        isLoaded: true
     };
 
     async componentDidMount() {
@@ -31,6 +32,8 @@ class Movies extends Component {
     };
 
     handleDelete = async movie => {
+        this.setState({isLoaded: false});
+
         const originalMovies = this.state.movies;
         const movies = originalMovies.filter(m => m._id !== movie._id);
         this.setState({movies: movies});
@@ -43,6 +46,9 @@ class Movies extends Component {
 
             this.setState({movies: originalMovies});
         }
+
+        this.setState({isLoaded: true});
+        toast.success('Movie Deleted Successfully!');
     };
 
     handleLike = (movie) => {
@@ -97,11 +103,8 @@ class Movies extends Component {
                     <img src={require("../images/logo_nbg.png")} height={"300px"} width={"300px"} className="App-logo"
                          alt="logo"/>
                     <p>
-                        There are <code>NO MOVIES</code> in the Database.
+                        Fetching <code>DATA</code> From the Database...
                     </p>
-                    <div className={"reload-container"}>
-                        <button onClick={this.refreshPage} className={"reload-btn"}><span>Refresh</span></button>
-                    </div>
                 </header>
             </div>
         );
@@ -121,41 +124,53 @@ class Movies extends Component {
 
         const {totalCount, data: movies} = this.getPagedData();
 
+        const isLoaded = this.state.isLoaded;
+
         return (
-            <div className={"row"}>
-                <div className="col-3">
-                    <ListGroup
-                        items={this.state.genres}
-                        selectedItem={this.state.selectedGenre}
-                        onItemSelect={this.handleGenreSelect}
-                    />
-                </div>
-                <div className="col">
-                    {(user && user.isAdmin) && <Link
-                        to={'/movies/new'}
-                        className={"btn btn-primary"}
-                        style={{marginBottom: 20}}
-                    >
-                        New Movie
-                    </Link>}
-                    <p>
-                        Currently Showing {totalCount} Movies in the Database
-                    </p>
-                    <SearchBox value={searchQuery} onChange={this.handleSearch}/>
-                    <MoviesTable
-                        movies={movies}
-                        onLike={this.handleLike}
-                        onDelete={this.handleDelete}
-                        onSort={this.handleSort}
-                        sortColumn={sortColumn}
-                    />
-                    <Pagination
-                        itemsCount={totalCount}
-                        pageSize={pageSize}
-                        currentPage={currentPage}
-                        onPageChange={this.handlePageChange}
-                    />
-                </div>
+            <div>
+                {isLoaded ? (<div className={"row"}>
+                    <div className="col-3" >
+                        <ListGroup
+                            items={this.state.genres}
+                            selectedItem={this.state.selectedGenre}
+                            onItemSelect={this.handleGenreSelect}
+                        />
+                    </div>
+                    <div className="col">
+                        {
+                            (user && user.isAdmin) && <div className={"reload-container"}>
+                                <Link
+                                    to={'/movies/new'}
+                                >
+                                    <button className={"reload-btn"}><span>New Movie</span></button>
+                                </Link>
+                            </div>
+                        }
+                        <p>
+                            Currently Showing {totalCount} Movies in the Database
+                        </p>
+                        <SearchBox value={searchQuery} onChange={this.handleSearch}/>
+                        <MoviesTable
+                            movies={movies}
+                            onLike={this.handleLike}
+                            onDelete={this.handleDelete}
+                            onSort={this.handleSort}
+                            sortColumn={sortColumn}
+                        />
+                        <Pagination
+                            itemsCount={totalCount}
+                            pageSize={pageSize}
+                            currentPage={currentPage}
+                            onPageChange={this.handlePageChange}
+                        />
+                    </div>
+                </div>) : (<div className="d-flex justify-content-center">
+                    <div className="spinner-border text-warning"
+                         style={{top: "50%",left: "50%",position: "fixed", width: "4rem", height: "4rem"}}
+                         role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </div>)}
             </div>
         );
     }

@@ -461,7 +461,6 @@
     display: inline-block;
     padding: 15px 30px;
     border: 2px solid #ffeba7;
-    margin: 40px;
     text-transform: uppercase;
     font-weight: 600;
     text-decoration: none;
@@ -472,16 +471,17 @@
     transition: 0.1s;
     transition-delay: 0s;
     font-family: "Poppins", sans-serif;
+    margin: 40px 40px 30px;
 }
 
 .reload-container .reload-btn:hover {
     transition-delay: 0.5s;
-    color: #1f2029;
-    box-shadow: 0 0 10px #ffeba7,
-                0 0 20px #ffeba7,
-                0 0 40px #ffeba7,
-                0 0 80px #ffeba7,
-                0 0 160px #ffeba7;
+    color: #ffeba7;
+    box-shadow: 0 0 10px #102770,
+                0 0 20px #102770,
+                0 0 40px #102770,
+                0 0 80px #102770,
+                0 0 160px #102770;
             }
 
 .reload-container .reload-btn::before {
@@ -504,8 +504,9 @@
     width: 60%;
     height: 100%;
     left: -2px;
-    box-shadow: 5px 0 0 #ffeba7,
-    5px 0 0 #ffeba7;
+    background: #102770;
+    box-shadow: 5px 0 0 #102770,
+    5px 0 0 #102770;
     transition-delay: 0s, 0.1s, 0.2s, 0.2s;
 }
 
@@ -529,7 +530,8 @@
     width: 60%;
     height: 100%;
     right: -2px;
-    box-shadow: -5px 0 0 #ffeba7,
-    -5px 0 0 #ffeba7;
+    background: #102770;
+    box-shadow: -5px 0 0 #102770,
+    -5px 0 0 #102770;
     transition-delay: 0s, 0.1s, 0.2s, 0.2s;
 }

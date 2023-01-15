@@ -10,7 +10,8 @@ class LoginForm extends Form {
     state = {
         account: {email: '', password: ''},
         errors: {},
-        status: true
+        status: true,
+        isLoaded: true
     };
 
     loginSchema = Joi.object({
@@ -26,13 +27,17 @@ class LoginForm extends Form {
 
     doSubmit = async (status) => {
         try {
-            if (status){
+            this.setState({isLoaded: false});
+
+            if (status) {
                 const {account} = this.state;
                 await auth.login(account.email, account.password);
-            }else {
+            } else {
                 const response = await userService.register(this.state.account);
                 auth.loginByJwt(response.headers['x-auth-token'])
             }
+
+            this.setState({isLoaded: true});
             window.location = '/';
         } catch (ex) {
             if (ex.response && ex.response.status === 400) {
@@ -40,6 +45,7 @@ class LoginForm extends Form {
                 errors.email = ex.response.data;
                 this.setState({errors});
                 toast.error(errors.email);
+                this.setState({isLoaded: true});
             }
         }
 
@@ -47,11 +53,21 @@ class LoginForm extends Form {
 
     render() {
         if (auth.getCurrentUser()) return <Navigate to={"/"}/>;
+        const isLoaded = this.state.isLoaded;
 
         return (
-            <form onSubmit={this.handleSubmit}>
-                {this.renderCardSection(true, "Log In",false)}
-            </form>
+            <div>
+                {isLoaded ? (<form onSubmit={this.handleSubmit}>
+                    {this.renderCardSection(true, "Log In", false)}
+                </form>) : (<div className="d-flex justify-content-center">
+                    <div className="spinner-border text-warning"
+                         style={{top: "50%", left: "50%", position: "fixed", width: "4rem", height: "4rem"}}
+                         role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </div>)}
+            </div>
+
         );
     };
 }
